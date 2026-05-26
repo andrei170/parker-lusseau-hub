@@ -84,14 +84,21 @@
   .demo .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;align-items:center}
   @media(max-width:760px){.demo iframe{height:420px}}
 
-  /* scorecard */
-  .score{width:100%;border-collapse:collapse;margin-top:24px;background:#fff;border:1px solid #e7e1d4;border-radius:8px;overflow:hidden}
-  .score th,.score td{padding:14px 16px;text-align:left;font-size:14.5px;border-bottom:1px solid #efeae0}
-  .score th{background:var(--navy);color:#fff;font-weight:600;letter-spacing:.4px}
-  .score td:first-child{font-weight:600;color:var(--navy)}
-  .grade{font-weight:700;padding:3px 10px;border-radius:4px;font-size:13px}
-  .g-f{background:#fbeae8;color:#c0392b}.g-c{background:#fdf3e3;color:#b9821f}.g-d{background:#fbeae8;color:#c0392b}.g-a{background:#e7f6ec;color:#1f7a47}.g-b{background:#eef4f9;color:#2b6188}
-  .score tr:last-child td{border-bottom:0}
+  /* scorecard (score out of 10 + why) */
+  .scards{margin-top:26px;display:grid;gap:14px}
+  .scard{background:#fff;border:1px solid #e7e1d4;border-radius:8px;padding:22px 24px}
+  .scard .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .scard .name{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--navy);font-weight:600}
+  .scard .score{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px;white-space:nowrap;color:var(--navy)}
+  .scard .score b{font-size:26px}
+  .scard .score .arr{color:var(--muted);margin:0 7px;font-weight:400}
+  .scard .score .tgt{color:#1f7a47}
+  .bar{height:8px;border-radius:5px;background:#efeae0;margin:13px 0 14px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:5px}
+  .s-lo i{background:#c0392b}.s-mid i{background:#b9821f}.s-hi i{background:#1f7a47}
+  .scard .gap{color:#3f4a59;font-size:14.5px;margin-bottom:10px}
+  .scard .why{color:var(--muted);font-size:14px;background:var(--paper);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 5px 5px 0}
+  .scard .why b{color:var(--navy)}
 
   /* roadmap */
   .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
@@ -200,14 +207,38 @@
     <span class="eyebrow reveal">The Audit</span>
     <h2 class="big reveal">Where you stand today, and where we take it</h2>
     <p class="lead reveal">I ran a full revenue-capture, catering, email and search audit. Here is the honest scorecard, and yes, your brand already grades well.</p>
-    <table class="score reveal">
-      <tr><th>Area</th><th>Today</th><th>Target</th><th>The gap in one line</th></tr>
-      <tr><td>Online ordering &amp; revenue capture</td><td><span class="grade g-f">F</span></td><td><span class="grade g-a">A+</span></td><td>No working online order or pre-order system, so demand leaves uncaptured</td></tr>
-      <tr><td>Catering &amp; corporate funnel</td><td><span class="grade g-d">D</span></td><td><span class="grade g-a">A</span></td><td>Car Week and corporate catering demand has no way to reserve with you</td></tr>
-      <tr><td>Email &amp; repeat-customer capture</td><td><span class="grade g-f">F</span></td><td><span class="grade g-a">A</span></td><td>No email list to move slower items like lunch sandwiches</td></tr>
-      <tr><td>Website &amp; brand</td><td><span class="grade g-b">B</span></td><td><span class="grade g-a">A</span></td><td>Already strong, only light polish needed</td></tr>
-      <tr><td>Local SEO &amp; AI search</td><td><span class="grade g-c">C</span></td><td><span class="grade g-a">A</span></td><td>Likely thin structured data, so search and AI cannot read your full menu and hours</td></tr>
-    </table>
+    <div class="scards reveal">
+      <div class="scard">
+        <div class="top"><span class="name">Online ordering &amp; revenue capture</span><span class="score"><b>1</b>/10<span class="arr">to</span><span class="tgt">9/10</span></span></div>
+        <div class="bar s-lo"><i style="width:10%"></i></div>
+        <p class="gap">No working online order or pre-order system, so demand leaves uncaptured.</p>
+        <p class="why"><b>Why you need this:</b> You sell out most mornings, and without online pre-orders that extra demand simply walks away instead of becoming a sale.</p>
+      </div>
+      <div class="scard">
+        <div class="top"><span class="name">Catering &amp; corporate funnel</span><span class="score"><b>3</b>/10<span class="arr">to</span><span class="tgt">9/10</span></span></div>
+        <div class="bar s-lo"><i style="width:30%"></i></div>
+        <p class="gap">Car Week and corporate catering demand has no way to reserve with you.</p>
+        <p class="why"><b>Why you need this:</b> Catering and corporate orders are far higher margin than single pastries, and right now a planner has no way to book you.</p>
+      </div>
+      <div class="scard">
+        <div class="top"><span class="name">Email &amp; repeat-customer capture</span><span class="score"><b>2</b>/10<span class="arr">to</span><span class="tgt">9/10</span></span></div>
+        <div class="bar s-lo"><i style="width:20%"></i></div>
+        <p class="gap">No email list to move slower items like the lunch sandwiches.</p>
+        <p class="why"><b>Why you need this:</b> An email list lets you fill the afternoon lull on demand, instead of hoping walk-ins show up.</p>
+      </div>
+      <div class="scard">
+        <div class="top"><span class="name">Website &amp; brand</span><span class="score"><b>8</b>/10<span class="arr">to</span><span class="tgt">9/10</span></span></div>
+        <div class="bar s-hi"><i style="width:80%"></i></div>
+        <p class="gap">Already strong, only light polish needed.</p>
+        <p class="why"><b>Why you need this:</b> Your brand already looks the part, so this is the one area we barely touch. Credit where it is due.</p>
+      </div>
+      <div class="scard">
+        <div class="top"><span class="name">Local SEO &amp; AI search</span><span class="score"><b>4</b>/10<span class="arr">to</span><span class="tgt">9/10</span></span></div>
+        <div class="bar s-lo"><i style="width:40%"></i></div>
+        <p class="gap">Thin structured data, so search and AI cannot read your full menu and hours.</p>
+        <p class="why"><b>Why you need this:</b> When someone searches "bakery near me" or asks AI where to get a cake in Monterey, proper data is how you become the answer.</p>
+      </div>
+    </div>
   </div>
 </section>
 
